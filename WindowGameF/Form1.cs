@@ -13,7 +13,8 @@ namespace WindowGameF
 {
     public partial class FormGameF : Form
     {
-        Game game;        const int size = 4;
+        Game game;        
+        const int size = 4;
         public FormGameF()
         {
             InitializeComponent();
