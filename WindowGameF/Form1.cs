@@ -21,7 +21,11 @@ namespace WindowGameF
             game = new Game(size);
             HideButtons();
         }
-
+        /// <summary>
+        /// Нажатие на кнопки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bt00_Click(object sender, EventArgs e)
         {
             if (game.IsSolved())
@@ -37,12 +41,20 @@ namespace WindowGameF
             }
         }
 
+        /// <summary>
+        /// Кнопка старта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btStart_Click(object sender, EventArgs e)
         {
             game.Start(1000 + DateTime.Now.DayOfYear);
             ShowButtons();
         }
 
+        /// <summary>
+        /// Спрятать кнопки
+        /// </summary>
         void HideButtons()
         {
             for(int x = 0; x< size; x++)
@@ -54,6 +66,10 @@ namespace WindowGameF
             }
             lbMoves.Text = "Welcome to Game F";
         }
+
+        /// <summary>
+        /// Показать кнопки
+        /// </summary>
         void ShowButtons()
         {
             for (int x = 0; x < size; x++)
@@ -65,12 +81,19 @@ namespace WindowGameF
             }
             lbMoves.Text ="Moves: " + game.moves;
         }
+
         void ShowDigitAt(int digit, int x, int y)
         {
             Button button = (Button)Controls["bt" + x + y];
             button.Text = DecToHex(digit);
             button.Visible = digit > 0;
         }
+
+        /// <summary>
+        /// Даем название кнопкам
+        /// </summary>
+        /// <param name="digit"></param>
+        /// <returns></returns>
         string DecToHex(int digit)
         {
             if (digit == 0)

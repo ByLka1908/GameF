@@ -11,11 +11,21 @@ namespace BoardF
         int size;
         int[,] map;
 
+        /// <summary>
+        /// Создаем игровое поле
+        /// </summary>
+        /// <param name="size"></param>
         public Map(int size)
         {
             this.size = size;
             map = new int[size, size];
         }
+
+        /// <summary>
+        /// Задать карту
+        /// </summary>
+        /// <param name="xy"></param>
+        /// <param name="value"></param>
         public void Set(Coord xy, int value)
         {
             if (xy.OnBoard(size))
@@ -23,6 +33,12 @@ namespace BoardF
                 map[xy.x, xy.y] = value;
             }
         }
+
+        /// <summary>
+        /// Получить карту
+        /// </summary>
+        /// <param name="xy"></param>
+        /// <returns></returns>
         public int Get(Coord xy)
         {
             if (xy.OnBoard(size))

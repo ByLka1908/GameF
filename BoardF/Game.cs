@@ -20,6 +20,10 @@ namespace BoardF
             map = new Map(size);
         }
 
+        /// <summary>
+        /// Начинаем
+        /// </summary>
+        /// <param name="seed"></param>
         public void Start(int seed = 0)
         {
             int digit = 0;
@@ -35,7 +39,11 @@ namespace BoardF
             }
         } 
 
-        void Shufle(int seed)//Перемешивание
+        /// <summary>
+        /// Перемешиваем плашки
+        /// </summary>
+        /// <param name="seed"></param>
+        void Shufle(int seed)
         {
             Random random = new Random(seed);
             for(int j = 0; j < seed; j++)
@@ -49,16 +57,22 @@ namespace BoardF
             return PressAt(new Coord(x, y));
         }
 
-        int PressAt(Coord xy)//Нажатие на плашки
+        /// <summary>
+        /// Нажатие на плашку
+        /// </summary>
+        /// <param name="xy"></param>
+        /// <returns></returns>
+        int PressAt(Coord xy)
         {
-            if (space.Equals(xy))
+            if (space.Equals(xy))//Если нажали на пустое пространство
             {
                 return 0;
             }
-            if(xy.x != space.x && xy.y != space.y)//Нажали по диагонали
+            if(xy.x != space.x && xy.y != space.y)//Пустое пространство по диагонали
             {
                 return 0;
             }
+
             int steps = Math.Abs(xy.x - space.x) +
                         Math.Abs(xy.y - space.y);
 
@@ -74,7 +88,12 @@ namespace BoardF
             return steps;
         }
 
-        void Shift(int sx, int sy)//Перемещение
+        /// <summary>
+        /// Перемещение 
+        /// </summary>
+        /// <param name="sx"></param>
+        /// <param name="sy"></param>
+        void Shift(int sx, int sy)
         {
             Coord next = space.Add(sx, sy);
             map.Copy(next, space); //map[space] := map[next]
@@ -86,6 +105,11 @@ namespace BoardF
            return GetDigitAt(new Coord(x, y));
         }
 
+        /// <summary>
+        /// Получение игрового поля
+        /// </summary>
+        /// <param name="xy"></param>
+        /// <returns></returns>
         int GetDigitAt(Coord xy)
         {
             if (space.Equals(xy))
@@ -95,7 +119,11 @@ namespace BoardF
             return map.Get(xy);
         }
 
-        public bool IsSolved()//Все ли собранно
+        /// <summary>
+        /// Закончена ли игра
+        /// </summary>
+        /// <returns></returns>
+        public bool IsSolved()
         {
             if (!space.Equals(new Coord(size)))
             {
